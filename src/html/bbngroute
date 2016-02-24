@@ -1,0 +1,20 @@
+
+
+var bbApp = angular.module('bbapp', []);
+
+    // create the controller and inject Angular's $scope
+    bbApp.controller('mainController', function($scope) {
+
+        // create a message to display in our view
+        $scope.message = 'Everyone come and see how good I look!';
+    });
+
+
+   scotchApp.config(function($routeProvider) {
+        $routeProvider
+
+            // route for the home page
+            .when('/', {
+                templateUrl : 'html/login.html',
+                controller  : 'mainController'
+            })});

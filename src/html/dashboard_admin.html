@@ -1,0 +1,71 @@
+<script type="text/javascript" src="javascript/dashboard.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="css/dashboard.css">
+<link rel="stylesheet" type="text/css" href="css/toaster.css">
+
+
+
+
+<body >
+    <div class="row" style="margin-top:20px;">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-2">
+        <img  src="images/logo.png">
+    </div>
+    <div class="col-sm-6"></div>
+    <div class="col-sm-2 right-aligned" >
+        <div class="btn btn-warning btn-md" ng-click="logout()">Logout</div>
+    </div>
+     <div class="col-sm-1"></div>   
+    </div>
+ <div ng-controller="dragdropController" style="margin:20px;margin-left:100px;" class='row centerpage'>
+    
+        <div class='contentWrapper ng-cloak'>
+        
+          <div class="row-fluid">
+            <div class="row">
+            <div class="col-md-2 margin-0 margin-50">
+              <h3 align="left" class="margin-10">{{user | uppercase}} Cards</h3>
+              <div style="border:solid 0px;">
+                  
+                    <div class="btn btn-droppable cards-list" ng-repeat="item in list5" data-drop="true" ng-model='list5' data-jqyoui-options="{accept:'.btn-draggable:not([ng-model=list5])'}"  jqyoui-droppable="{index: {{$index}}}" >
+                    
+                        <div class="btn btn-info btn-lg btn-draggable card" data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="list5" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true}" ng-hide="!item.title">{{user}} {{item.title}}</div>
+                  
+                    </div>
+              </div>
+          </div>
+          <div class="col-md-3 ">
+                <h3 align="left">List 1</h3>
+                <div class="thumbnail drop-list" data-drop="true" id="list1"ng-model='list1' data-jqyoui-options="optionsList1" jqyoui-droppable="{multiple:true,onDrop:'notify'}" >
+                    <div class="caption">
+                        <div class="btn btn-info btn-draggable drop-card" ng-repeat="item in list1" ng-show="item.title" data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="list1" jqyoui-draggable="{index: {{$index}},animate:true}" data-add-a-space-between>{{user}} {{item.title}}</div>
+                    </div>
+                </div>           
+            
+          </div>
+          <div class="col-md-3 margin-10" >
+            <h3 align="left">List 2</h3>
+                <div class="thumbnail drop-list" data-drop="true" id="list2" ng-model='list2' data-jqyoui-options="{accept:'.btn-draggable:not([ng-model=list2])'}"  jqyoui-droppable="{multiple:true,onDrop:'notify'}" >
+                    <div class="caption">
+                        <div class="btn btn-info btn-draggable drop-card" ng-repeat="item in list2" ng-show="item.title" data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="list2" jqyoui-draggable="{index: {{$index}},animate:true}" data-add-a-space-between>{{user}} {{item.title}}</div>
+                    </div>
+        </div>
+      </div>
+        <div class="col-md-3 margin-10" ng-show="user == 'admin'"><h3 align="left">List 3</h3>
+                <div class="thumbnail drop-list" data-drop="true" id="list3"ng-model='list3' data-jqyoui-options="{accept:'.btn-draggable:not([ng-model=list3])'}"  jqyoui-droppable="{multiple:true,onDrop:'notify'}">
+                  <div class="caption">
+                    <div class="btn btn-info btn-draggable drop-card" ng-repeat="item in list3"  drop-card data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="list3" jqyoui-draggable="{index: {{$index}},animate:true}">{{user}} {{item.title}}</div><br>
+                  </div>
+                </div>
+             
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+    </div>
+    </div>
+      <div>
+      <toaster-container toaster-options="{'time-out': 3000}"></toaster-container>
+    </div>
+</body>
